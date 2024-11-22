@@ -1,7 +1,10 @@
 import javax.swing.JFrame;
+import javax.swing.border.Border;
+
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 public class Calculadora extends JFrame {
@@ -31,11 +34,15 @@ public class Calculadora extends JFrame {
             }
         });
 
+        Pantalla pantalla = new Pantalla();
+        add(pantalla, BorderLayout.NORTH);
+
     }
 
     public static void main(String[] args) throws Exception {
         Calculadora cal = new Calculadora();
         cal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cal.setVisible(true);
+        
     }
 }
