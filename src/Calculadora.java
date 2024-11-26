@@ -36,13 +36,32 @@ public class Calculadora extends JFrame {
 
         Pantalla pantalla = new Pantalla();
         add(pantalla, BorderLayout.NORTH);
+        PantallaAlmacen pantallaAlmacen = new PantallaAlmacen();
+        add(pantallaAlmacen, BorderLayout.WEST);
+        PanelNumerico panelNumerico = new PanelNumerico();
+        add(panelNumerico, BorderLayout.CENTER);
+        PanelOperador panelOperador = new PanelOperador();
+        add(panelOperador, BorderLayout.EAST);
 
+        addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e){
+                int anchoPantallaAlmacen = getWidth()/3;
+                int anchoPanelNumerico = getWidth()*2/5;
+                int anchoPanelOperador = getWidth()*4/15;
+                int alturaPantalla = getHeight()/4;
+                pantallaAlmacen.setPreferredSize(new Dimension(anchoPantallaAlmacen, getHeight()));
+                panelNumerico.setPreferredSize(new Dimension(anchoPanelNumerico, getHeight()));
+                panelOperador.setPreferredSize(new Dimension(anchoPanelOperador, getHeight()));
+                pantalla.setPreferredSize(new Dimension(getWidth(), alturaPantalla));
+                revalidate();
+            }
+        });
     }
 
     public static void main(String[] args) throws Exception {
         Calculadora cal = new Calculadora();
         cal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cal.setVisible(true);
-        
+
     }
 }
