@@ -29,31 +29,33 @@ public class Calculadora extends JFrame {
             }
 
             @Override
-            public void componentMoved(ComponentEvent e){
+            public void componentMoved(ComponentEvent e) {
                 setLocationRelativeTo(null);
             }
         });
 
-        Pantalla pantalla = new Pantalla();
-        add(pantalla, BorderLayout.NORTH);
         PantallaAlmacen pantallaAlmacen = new PantallaAlmacen();
-        add(pantallaAlmacen, BorderLayout.WEST);
+        add(pantallaAlmacen);
+        Pantalla pantalla = new Pantalla();
+        add(pantalla);
         PanelNumerico panelNumerico = new PanelNumerico();
-        add(panelNumerico, BorderLayout.CENTER);
+        add(panelNumerico);
         PanelOperador panelOperador = new PanelOperador();
-        add(panelOperador, BorderLayout.EAST);
+        add(panelOperador);
 
         addComponentListener(new ComponentAdapter() {
-            public void componentResized(ComponentEvent e){
-                int anchoPantallaAlmacen = getWidth()/3;
-                int anchoPanelNumerico = getWidth()*2/5;
-                int anchoPanelOperador = getWidth()*4/15;
-                int alturaPantalla = getHeight()/4;
-                pantallaAlmacen.setPreferredSize(new Dimension(anchoPantallaAlmacen, getHeight()));
-                panelNumerico.setPreferredSize(new Dimension(anchoPanelNumerico, getHeight()));
-                panelOperador.setPreferredSize(new Dimension(anchoPanelOperador, getHeight()));
-                pantalla.setPreferredSize(new Dimension(getWidth(), alturaPantalla));
-                revalidate();
+            public void componentResized(ComponentEvent e) {
+                int anchoTotal = getWidth();
+                int alturaTotal = getHeight();
+
+                pantallaAlmacen.setBounds(0, 0, getWidth() / 3, getHeight());
+                pantalla.setBounds(anchoTotal / 3, 0, (anchoTotal * 2) / 3, alturaTotal / 4);
+                panelNumerico.setBounds(anchoTotal / 3, alturaTotal / 4, (anchoTotal * 6) / 15, (alturaTotal * 3) / 4);
+                panelOperador.setBounds((anchoTotal * 11) / 15, alturaTotal / 4, (anchoTotal * 4) / 15,
+                        (alturaTotal * 3) / 4);
+
+                repaint();
+
             }
         });
     }
