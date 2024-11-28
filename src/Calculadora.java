@@ -1,10 +1,10 @@
-import javax.swing.JFrame;
-import javax.swing.border.Border;
+/*import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 public class Calculadora extends JFrame {
@@ -34,14 +34,17 @@ public class Calculadora extends JFrame {
             }
         });
 
+        JPanel panelPrincipal = new JPanel(null);
+        add(panelPrincipal);
+
         PantallaAlmacen pantallaAlmacen = new PantallaAlmacen();
-        add(pantallaAlmacen);
+        panelPrincipal.add(pantallaAlmacen);
         Pantalla pantalla = new Pantalla();
-        add(pantalla);
+        panelPrincipal.add(pantalla);
         PanelNumerico panelNumerico = new PanelNumerico();
-        add(panelNumerico);
+        panelPrincipal.add(panelNumerico);
         PanelOperador panelOperador = new PanelOperador();
-        add(panelOperador);
+        panelPrincipal.add(panelOperador);
 
         addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
@@ -50,20 +53,24 @@ public class Calculadora extends JFrame {
 
                 pantallaAlmacen.setBounds(0, 0, getWidth() / 3, getHeight());
                 pantalla.setBounds(anchoTotal / 3, 0, (anchoTotal * 2) / 3, alturaTotal / 4);
-                panelNumerico.setBounds(anchoTotal / 3, alturaTotal / 4, (anchoTotal * 6) / 15, (alturaTotal * 3) / 4);
+                panelNumerico.setBounds(anchoTotal / 3, alturaTotal / 4, (getWidth() * 2) / 5, (alturaTotal * 3) / 4);
                 panelOperador.setBounds((anchoTotal * 11) / 15, alturaTotal / 4, (anchoTotal * 4) / 15,
                         (alturaTotal * 3) / 4);
-
-                repaint();
+                
+                panelPrincipal.repaint();
 
             }
         });
     }
 
     public static void main(String[] args) throws Exception {
-        Calculadora cal = new Calculadora();
-        cal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        cal.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            Calculadora cal = new Calculadora();
+            cal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            cal.setVisible(true);
+        });
+       
 
     }
 }
+*/
