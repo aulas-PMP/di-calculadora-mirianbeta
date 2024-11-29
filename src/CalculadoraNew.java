@@ -26,7 +26,7 @@ public class CalculadoraNew extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 2; 
-        gbc.weightx = 0.33; 
+        gbc.weightx = 0.5; 
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         add(pantallaAlmacen, gbc);
@@ -36,24 +36,27 @@ public class CalculadoraNew extends JFrame {
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.gridwidth = 2;
-        gbc.weightx = 0.65; 
+        gbc.weightx = 0.5; 
         gbc.weighty = 0.25; 
+        gbc.fill = GridBagConstraints.BOTH;
         add(pantalla, gbc);
 
         // Configurar constraints para PanelNumerico
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1; 
-        gbc.weightx = 0.4; 
+        gbc.weightx = 0.3; 
         gbc.weighty = 0.75; 
+        gbc.fill = GridBagConstraints.BOTH;
         add(panelNumerico, gbc);
 
         // Configurar constraints para PanelOperador
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.weightx = 0.27; 
+        gbc.weightx = 0.2; 
         gbc.weighty = 0.75;
+        gbc.fill = GridBagConstraints.BOTH;
         add(panelOperador, gbc);
     }
 

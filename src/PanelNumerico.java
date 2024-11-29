@@ -7,46 +7,45 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
 public class PanelNumerico extends JPanel {
-    
-    public PanelNumerico(){       
-       setLayout(new GridBagLayout());
+
+    public PanelNumerico() {
+        setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(2, 2, 2, 2);
         gbc.weightx = 1;
-        //gbc.weighty = getHeight();
+        // gbc.weighty = getHeight();
 
-       /* int number = 1;
-        for (int row = 0; row<3; row++){
-            for (int col= 0; col<3; col++){
-                JButton boton = new JButton(String.valueOf(number));
-                gbc.gridx = col;
-                gbc.gridy = row;
-                add(boton, gbc);
-                number++;
-            }
-        }
+        /*
+         * int number = 1;
+         * for (int row = 0; row<3; row++){
+         * for (int col= 0; col<3; col++){
+         * JButton boton = new JButton(String.valueOf(number));
+         * gbc.gridx = col;
+         * gbc.gridy = row;
+         * add(boton, gbc);
+         * number++;
+         * }
+         * }
+         * 
+         * JButton boton0 = new JButton("0");
+         * gbc.gridx = 0;
+         * gbc.gridy = 3;
+         * gbc.gridwidth = 2;
+         * gbc.weighty = 1;
+         * add(boton0, gbc);
+         * 
+         * JButton botonComa = new JButton(",");
+         * gbc.gridx = 2;
+         * gbc.gridy = 3;
+         * gbc.gridwidth = 1;
+         * gbc.weighty = 1;
+         * add(botonComa, gbc);
+         */
 
-        JButton boton0 = new JButton("0");
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        gbc.weighty = 1;
-        add(boton0, gbc);
-
-        JButton botonComa = new JButton(",");
-        gbc.gridx = 2;
-        gbc.gridy = 3;
-        gbc.gridwidth = 1;
-        gbc.weighty = 1;
-        add(botonComa, gbc);
-        */
-
-
-        for (int number = 1; number<=9; number++){
+        for (int number = 1; number <= 9; number++) {
             JButton boton = new JButton(String.valueOf(number));
             add(boton);
         }
@@ -63,7 +62,7 @@ public class PanelNumerico extends JPanel {
         ajustarDistribucion(getHeight());
     }
 
-    private void ajustarDistribucion(int height){
+    private void ajustarDistribucion(int height) {
         GridBagLayout layout = (GridBagLayout) getLayout();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
@@ -94,7 +93,8 @@ public class PanelNumerico extends JPanel {
         layout.setConstraints(boton0, gbc);
 
         JButton botonComa = (JButton) getComponent(10);
-        botonComa.setFont(new Font("Arial", Font.PLAIN, 30));        gbc.gridx = 2;
+        botonComa.setFont(new Font("Arial", Font.PLAIN, 30));
+        gbc.gridx = 2;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
         layout.setConstraints(botonComa, gbc);
@@ -102,6 +102,5 @@ public class PanelNumerico extends JPanel {
         revalidate();
         repaint();
     }
-
 
 }
