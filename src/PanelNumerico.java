@@ -9,52 +9,43 @@ import javax.swing.JPanel;
 
 public class PanelNumerico extends JPanel {
 
-    public PanelNumerico() {
+    private Pantalla pantalla;
+    private PantallaAlmacen pantallaAlmacen;
+    private StringBuilder operacionActual = new StringBuilder();
+
+    public PanelNumerico(Pantalla pantalla, PantallaAlmacen pantallaAlmacen) {
+        this.pantalla = pantalla;
+        this.pantallaAlmacen = pantallaAlmacen;
+        
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(2, 2, 2, 2);
         gbc.weightx = 1;
-        // gbc.weighty = getHeight();
-
-        /*
-         * int number = 1;
-         * for (int row = 0; row<3; row++){
-         * for (int col= 0; col<3; col++){
-         * JButton boton = new JButton(String.valueOf(number));
-         * gbc.gridx = col;
-         * gbc.gridy = row;
-         * add(boton, gbc);
-         * number++;
-         * }
-         * }
-         * 
-         * JButton boton0 = new JButton("0");
-         * gbc.gridx = 0;
-         * gbc.gridy = 3;
-         * gbc.gridwidth = 2;
-         * gbc.weighty = 1;
-         * add(boton0, gbc);
-         * 
-         * JButton botonComa = new JButton(",");
-         * gbc.gridx = 2;
-         * gbc.gridy = 3;
-         * gbc.gridwidth = 1;
-         * gbc.weighty = 1;
-         * add(botonComa, gbc);
-         */
 
         for (int number = 1; number <= 9; number++) {
             JButton boton = new JButton(String.valueOf(number));
+            boton.addActionListener(e -> agregarNumero(boton.getText()));
             add(boton);
         }
 
         JButton boton0 = new JButton("0");
+        boton0.addActionListener(e -> agregarNumero(boton0.getText()));
         add(boton0);
         JButton botonComa = new JButton(",");
+        botonComa.addActionListener(e -> agregarNumero(botonComa.getText()));
         add(botonComa);
     }
+
+    private void agregarNumero(String numero) {
+        String operacionActual = pantalla.getOperacionActual();
+        if (operacionActual.equals("0")) {
+            operacionActual = ""; // Si la operación actual es "0", la reemplazamos
+        }
+        pantalla.actualizarOperacion(operacionActual + numero);
+    }
+    
 
     @Override
     protected void paintComponent(Graphics g) {

@@ -12,6 +12,8 @@ public class CalculadoraNew extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        CalculadoraLogica calculadoraLogica = new CalculadoraLogica();
+
         // Configurar el Layout principal de la ventana
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -19,8 +21,8 @@ public class CalculadoraNew extends JFrame {
         // Crear los paneles secundarios
         PantallaAlmacen pantallaAlmacen = new PantallaAlmacen();
         Pantalla pantalla = new Pantalla();
-        PanelNumerico panelNumerico = new PanelNumerico();
-        PanelOperador panelOperador = new PanelOperador();
+        PanelNumerico panelNumerico = new PanelNumerico(pantalla, pantallaAlmacen);
+        PanelOperador panelOperador = new PanelOperador(calculadoraLogica, pantalla, pantallaAlmacen);
 
         // Configurar constraints para PantallaAlmacen
         gbc.gridx = 0;
